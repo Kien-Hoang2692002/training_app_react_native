@@ -1,11 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
-import Welcome from "./screens/Welcome";
+import { Welcome, Login, Register } from "./screens";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello!</Text>
-      <Welcome />
+      <Register />
     </View>
   );
 }
