@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Welcome, Login, Register } from "./screens";
+import { Welcome, Login, Register, FoodList } from "./screens";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Register />
+      <FoodList />
     </View>
   );
 }
