@@ -11,7 +11,7 @@ import {
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
-import { images, colors, icons, fontSizes } from "../../constants";
+import { colors, fontSizes } from "../../constants";
 import FoodItem from "./FoodItem";
 
 // Xây dựng listview từ danh sách các đối tượng, bao ngoài bằng ScrollView

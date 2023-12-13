@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { TouchableOpacity, Text, View, Image } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import { images, colors, icons, fontSizes } from "../../constants";
+import { colors, fontSizes } from "../../constants";
 
 function _getColorFromStatus(status) {
   if (status.toLowerCase().trim() === "opening now") {
