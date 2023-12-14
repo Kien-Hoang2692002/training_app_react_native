@@ -1,3 +1,4 @@
 import UiButton from "./UiButton";
+import UiHeader from "./UiHeader";
 
-export { UiButton };
+export { UiButton, UiHeader };

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Text, View } from "react-native";
-import { images, colors, fontSizes } from "../../constants";
+import { View } from "react-native";
+import { colors } from "../../constants";
 import { FontAwesome } from "@expo/vector-icons";
 
 function FiveStars(props) {
