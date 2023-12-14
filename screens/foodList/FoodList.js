@@ -8,6 +8,8 @@ import {
   Text,
   TextInput,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -171,7 +173,7 @@ const FoodList = () => {
   };
 
   return (
-    <View style={{ flex: 1, marginTop: 40 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View>
         {/* <ScrollView>
           {foods.map((food, index) => (
@@ -276,7 +278,7 @@ const FoodList = () => {
           </View>
         )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

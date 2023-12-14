@@ -5,6 +5,7 @@ import {
   View,
   Image,
   ImageBackground,
+  Platform,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -31,8 +32,9 @@ const Welcome = (props) => {
   const { navigation, route } = props;
   //functions of navigate to/back
   const { navigate, goBack } = navigation;
+
   return (
-    <View style={{ backgroundColor: "white", flex: 100, marginTop: 8 }}>
+    <View style={{ backgroundColor: "white", flex: 100, paddingTop: 20 }}>
       <ImageBackground
         source={images.background}
         resizeMode="cover"

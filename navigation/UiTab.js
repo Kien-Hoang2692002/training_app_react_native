@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 import { fontSizes, colors } from "../constants";

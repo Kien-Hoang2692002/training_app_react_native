@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { View, FlatList, Text } from "react-native";
 import GridItem from "./GridItem";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const ProductGridView = () => {
   const [products, setProducts] = useState([
@@ -131,8 +132,8 @@ const ProductGridView = () => {
     },
   ]);
   return (
-    <View style={{ flex: 1 }}>
-      <Text>ProductGridView</Text>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Text style={{ fontSize: 20, textAlign: "center" }}>Products</Text>
       <FlatList
         style={{ marginTop: 5 }}
         numColumns={2}
@@ -161,7 +162,7 @@ const ProductGridView = () => {
           />
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
