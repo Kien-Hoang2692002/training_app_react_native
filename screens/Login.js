@@ -13,20 +13,25 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { isValidPassword, isValidEmail } from "../utils/Validations";
 import { images, colors, icons, fontSizes } from "../constants";
 
-const Login = () => {
+const Login = (props) => {
   //state for validating
   const [errorEmail, setErrorEmail] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
+  const [errorPassword, setErrorPassword] = useState("123456");
 
   //state to store email/password
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("kien@gmail.com");
+  const [password, setPassword] = useState("123456");
 
   const isValidationOK = () =>
     email.length > 0 &&
     password.length > 0 &&
     isValidEmail(email) == true &&
     isValidPassword(password) == true;
+
+  //navigation
+  const { navigation, route } = props;
+  //functions of navigate to/back
+  const { navigate, goBack } = navigation;
 
   return (
     <KeyboardAvoidingView
@@ -89,6 +94,7 @@ const Login = () => {
               );
               setEmail(text);
             }}
+            value={email}
             placeholder="Enter your email address"
             placeholderTextColor={colors.placeholder}
           />
@@ -133,6 +139,7 @@ const Login = () => {
               setPassword(text);
             }}
             secureTextEntry={true}
+            value={password}
             placeholder="Enter your password"
             placeholderTextColor={colors.placeholder}
           />
@@ -164,7 +171,10 @@ const Login = () => {
       >
         <TouchableOpacity
           disabled={isValidationOK() == false}
-          onPress={() => alert(`Email = ${email}, password = ${password}`)}
+          onPress={() =>
+            // alert(`Email = ${email}, password = ${password}`)
+            navigate("UiTab")
+          }
           style={{
             backgroundColor:
               isValidationOK() == true ? colors.primary : colors.inactive,

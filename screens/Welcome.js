@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   TouchableOpacity,
-  StyleSheet,
   Text,
   View,
   Image,
@@ -28,7 +27,10 @@ const Welcome = (props) => {
       isSelected: false,
     },
   ]);
-
+  //navigation
+  const { navigation, route } = props;
+  //functions of navigate to/back
+  const { navigate, goBack } = navigation;
   return (
     <View style={{ backgroundColor: "white", flex: 100, marginTop: 8 }}>
       <ImageBackground
@@ -141,7 +143,12 @@ const Welcome = (props) => {
             flex: 20,
           }}
         >
-          <UiButton title={"Login".toUpperCase()} />
+          <UiButton
+            onPress={() => {
+              navigate("Login");
+            }}
+            title={"Login".toUpperCase()}
+          />
           <Text
             style={{
               textAlign: "center",
@@ -155,7 +162,9 @@ const Welcome = (props) => {
             style={{
               padding: 5,
             }}
-            onPress={() => alert("press register")}
+            onPress={() => {
+              navigate("Register");
+            }}
           >
             <Text
               style={{
@@ -175,8 +184,6 @@ const Welcome = (props) => {
 };
 
 export default Welcome;
-
-const styles = StyleSheet.create({});
 
 /*
 const Welcome = (props) => {

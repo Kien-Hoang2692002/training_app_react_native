@@ -1,17 +1,18 @@
 import { StyleSheet, Text, View } from "react-native";
-import {
-  Welcome,
-  Login,
-  Register,
-  Settings,
-  FoodList,
-  ProductGridView,
-} from "./screens";
-
+// import {
+//   Welcome,
+//   Login,
+//   Register,
+//   Settings,
+//   FoodList,
+//   ProductGridView,
+// } from "./screens";
+// import UiTab from "./navigation/UiTab";
+import MyApp from "./navigation/MyApp";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Settings />
+      <MyApp />
     </View>
   );
 }
