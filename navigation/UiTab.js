@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 import { fontSizes, colors } from "../constants";
-import { Settings, ProductGridView, FoodList } from "../screens";
+import { Settings, ProductGridView, FoodList, Profile } from "../screens";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,6 +26,8 @@ const screenOptions = ({ route }) => ({
       iconName = "list-ol";
     } else if (screenName == "Settings") {
       iconName = "cogs";
+    } else if (screenName == "Profile") {
+      iconName = "user";
     }
     return (
       <FontAwesome
@@ -68,6 +70,16 @@ const UiTab = (props) => {
         component={Settings}
         options={{
           tabBarLabel: "Settings",
+          tabBarLabelStyle: {
+            fontSize: fontSizes.h6,
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarLabel: "Profile",
           tabBarLabelStyle: {
             fontSize: fontSizes.h6,
           },
