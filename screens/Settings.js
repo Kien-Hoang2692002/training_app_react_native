@@ -1,4 +1,4 @@
-import { Switch, View, Text, ScrollView } from "react-native";
+import { Switch, View, Text, ScrollView, TouchableOpacity } from "react-native";
 import {
   FontAwesome,
   AntDesign,
@@ -9,11 +9,24 @@ import {
 import { UiHeader } from "../components";
 import { colors, fontSizes } from "../constants";
 import { useState } from "react";
+import {
+  auth,
+  firebaseDatabaseRef,
+  firebaseSet,
+  firebaseDatabase,
+} from "../firebase/firebase";
+import { StackActions } from "@react-navigation/native";
 
-const Settings = () => {
+const Settings = (props) => {
   const [isEnabledLockApp, setEnabledLockApp] = useState(true);
   const [isUseFingerprint, setUseFingerprint] = useState(false);
   const [isEnabledChangePassword, setEnabledChangePassword] = useState(true);
+
+  //navigation
+  const { navigation, route } = props;
+  //functions of navigate to/back
+  const { navigate, goBack } = navigation;
+
   return (
     <View
       style={{
@@ -198,12 +211,16 @@ const Settings = () => {
             color="gray"
           />
         </View>
-        <View
+        <TouchableOpacity
           style={{
             flexDirection: "row",
             paddingVertical: 10,
             justifyContent: "center",
             alignItems: "center",
+          }}
+          onPress={() => {
+            auth.signOut();
+            navigation.dispatch(StackActions.popToTop());
           }}
         >
           <Entypo
@@ -227,7 +244,7 @@ const Settings = () => {
             size={20}
             color="gray"
           />
-        </View>
+        </TouchableOpacity>
         {/* Secutiry */}
         <View
           style={{

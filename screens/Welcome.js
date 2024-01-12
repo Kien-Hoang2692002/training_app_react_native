@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   TouchableOpacity,
   Text,
@@ -8,9 +8,16 @@ import {
   Platform,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-
 import { images, icons, fontSizes, colors } from "../constants";
 import { UiButton } from "../components";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  auth,
+  onAuthStateChanged,
+  firebaseDatabaseRef,
+  firebaseSet,
+  firebaseDatabase,
+} from "../firebase/firebase";
 
 const Welcome = (props) => {
   //state => when a stata is changed => UI is reloaded
@@ -32,6 +39,29 @@ const Welcome = (props) => {
   const { navigation, route } = props;
   //functions of navigate to/back
   const { navigate, goBack } = navigation;
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (responseUser) => {
+      //debugger;
+      if (responseUser) {
+        //save data to Firebase
+        let user = {
+          userId: responseUser.uid,
+          email: responseUser.email,
+          emailVerified: responseUser.emailVerified,
+          accessToken: responseUser.accessToken,
+        };
+        //console.log("user:", user);
+        firebaseSet(
+          firebaseDatabaseRef(firebaseDatabase, `users/${responseUser.uid}`),
+          user
+        );
+        //save user to local storage
+        AsyncStorage.setItem("user", JSON.stringify(user));
+        navigate("UiTab");
+      }
+    });
+  });
 
   return (
     <View style={{ backgroundColor: "white", flex: 100, paddingTop: 20 }}>

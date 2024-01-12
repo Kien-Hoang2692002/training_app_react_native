@@ -100,8 +100,8 @@ function Profile(props) {
         <Text>{phone}</Text>
       </View>
       <View>
-        {/* <Text>{JSON.stringify(populations)}</Text> */}
-        <LineChart
+        <Text>{JSON.stringify(populations)}</Text>
+        {/* <LineChart
           data={{
             labels: populations.map((item) => item.year),
             datasets: [
@@ -128,7 +128,7 @@ function Profile(props) {
             barPercentage: 0.5,
             useShadowColorFromDataset: true, // optional
           }}
-        />
+        /> */}
       </View>
     </SafeAreaView>
   );

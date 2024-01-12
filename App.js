@@ -1,3 +1,4 @@
+import { registerRootComponent } from "expo";
 import { StyleSheet, Text, View } from "react-native";
 // import {
 //   Welcome,

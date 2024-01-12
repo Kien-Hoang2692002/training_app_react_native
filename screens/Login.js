@@ -9,18 +9,27 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
-
 import { isValidPassword, isValidEmail } from "../utils/Validations";
 import { images, colors, icons, fontSizes } from "../constants";
+import {
+  onAuthStateChanged,
+  firebaseDatabaseRef,
+  firebaseSet,
+  firebaseDatabase,
+  auth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+} from "../firebase/firebase";
 
 const Login = (props) => {
   //state for validating
   const [errorEmail, setErrorEmail] = useState("");
-  const [errorPassword, setErrorPassword] = useState("123456");
+  const [errorPassword, setErrorPassword] = useState("");
 
   //state to store email/password
-  const [email, setEmail] = useState("kien@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("kiendeptrai@gmail.com");
+  const [password, setPassword] = useState("123456Abc");
 
   const isValidationOK = () =>
     email.length > 0 &&
@@ -171,10 +180,17 @@ const Login = (props) => {
       >
         <TouchableOpacity
           disabled={isValidationOK() == false}
-          onPress={() =>
-            // alert(`Email = ${email}, password = ${password}`)
-            navigate("UiTab")
-          }
+          onPress={() => {
+            //alert(`Email = ${email}, password = ${password}`)
+            signInWithEmailAndPassword(auth, email, password)
+              .then((userCredential) => {
+                const user = userCredential.user;
+                navigate("UiTab");
+              })
+              .catch((error) => {
+                alert(`Cannot signin, error: ${error.message}`);
+              });
+          }}
           style={{
             backgroundColor:
               isValidationOK() == true ? colors.primary : colors.inactive,
@@ -197,7 +213,7 @@ const Login = (props) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => alert("press register")}
+          onPress={() => navigate("Register")}
           style={{
             padding: 5,
           }}

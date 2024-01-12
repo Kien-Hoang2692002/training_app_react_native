@@ -5,12 +5,16 @@ import Settings from "./Settings";
 import FoodList from "./foodList/FoodList";
 import ProductGridView from "./ProductGrid/ProductGridView";
 import Profile from "./Profile";
+import Chat from "./chat/Chat";
+import Messenger from "./messenger/Messenger";
 export {
   Welcome,
   Login,
   Register,
-  Settings,
-  FoodList,
   ProductGridView,
+  Chat,
+  Messenger,
+  FoodList,
+  Settings,
   Profile,
 };
